@@ -1,1 +1,3 @@
-# poll_external_ip
+# Poll External IP Address
+
+This is a bash script that is scheduled to run periodically on my Synology NAS.  It polls 3 websites to determine the current external IP address assigned by my internet provider.  If it detects that the IP address has changed, it saves the new address in a file, and it exits with error code 1.  If no change is detected then it exits with error code 0.  The error code can be used in the Synology Task Scheduler to send an email on error.  That way I get an email letting me know the IP address has changed.  This is a poor man's substitute for a dynamic dns service.  There are some minor attempts at robustness.  If the results from the 3 websites polled disagree, it uses majority logic voting.  If at least one website matches the old IP address it assumes the IP address has not changed.    
